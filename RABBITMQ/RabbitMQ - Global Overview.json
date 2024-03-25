@@ -77,8 +77,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 5,
-        "w": 4,
+        "h": 7,
+        "w": 24,
         "x": 0,
         "y": 0
       },
@@ -88,14 +88,18 @@
       "options": {
         "colorMode": "background",
         "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
+        "justifyMode": "center",
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
           ],
           "fields": "",
           "values": false
+        },
+        "text": {
+          "titleSize": 20,
+          "valueSize": 50
         },
         "textMode": "auto"
       },
@@ -108,7 +112,7 @@
           },
           "editorMode": "builder",
           "exemplar": false,
-          "expr": "kube_pod_container_status_running{namespace=\"$namespace\", pod=\"rabbitmq-server-0\"}",
+          "expr": "kube_pod_container_status_running{namespace=\"$namespace\"}",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -121,411 +125,7 @@
         }
       ],
       "timeFrom": "30s",
-      "title": "RabbitMQ-0",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "Down"
-                },
-                "1": {
-                  "text": "Up"
-                }
-              },
-              "type": "value"
-            },
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "dark-red",
-                "value": 0
-              },
-              {
-                "color": "dark-green",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 4,
-        "y": 0
-      },
-      "id": 90,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "10.0.3",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "builder",
-          "exemplar": false,
-          "expr": "kube_pod_container_status_running{namespace=\"$namespace\", pod=\"rabbitmq-server-1\"}",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "{{pod}}",
-          "metric": "rabbitmq_up",
-          "range": false,
-          "refId": "A",
-          "step": 2
-        }
-      ],
-      "timeFrom": "30s",
-      "title": "RabbitMQ-01",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "Down"
-                },
-                "1": {
-                  "text": "Up"
-                }
-              },
-              "type": "value"
-            },
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "dark-red",
-                "value": 0
-              },
-              {
-                "color": "dark-green",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 8,
-        "y": 0
-      },
-      "id": 91,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "10.0.3",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "builder",
-          "exemplar": false,
-          "expr": "kube_pod_container_status_running{namespace=\"$namespace\", pod=\"rabbitmq-server-2\"}",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "{{pod}}",
-          "metric": "rabbitmq_up",
-          "range": false,
-          "refId": "A",
-          "step": 2
-        }
-      ],
-      "timeFrom": "30s",
-      "title": "RabbitMQ-02",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "Down"
-                },
-                "1": {
-                  "text": "Up"
-                }
-              },
-              "type": "value"
-            },
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "dark-red",
-                "value": 0
-              },
-              {
-                "color": "dark-green",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 12,
-        "y": 0
-      },
-      "id": 92,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "10.0.3",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "builder",
-          "exemplar": false,
-          "expr": "kube_pod_container_status_running{namespace=\"$namespace\", pod=\"rabbitmq-server-3\"}",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "{{pod}}",
-          "metric": "rabbitmq_up",
-          "range": false,
-          "refId": "A",
-          "step": 2
-        }
-      ],
-      "timeFrom": "30s",
-      "title": "RabbitMQ-03",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "Down"
-                },
-                "1": {
-                  "text": "Up"
-                }
-              },
-              "type": "value"
-            },
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "dark-red",
-                "value": 0
-              },
-              {
-                "color": "dark-green",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 16,
-        "y": 0
-      },
-      "id": 93,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "10.0.3",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "builder",
-          "exemplar": false,
-          "expr": "kube_pod_container_status_running{namespace=\"$namespace\", pod=\"rabbitmq-server-4\"}",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "{{pod}}",
-          "metric": "rabbitmq_up",
-          "range": false,
-          "refId": "A",
-          "step": 2
-        }
-      ],
-      "timeFrom": "30s",
-      "title": "RabbitMQ-04",
+      "title": "RabbitMQ",
       "type": "stat"
     },
     {
@@ -534,7 +134,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 5
+        "y": 7
       },
       "id": 74,
       "panels": [],
@@ -546,7 +146,7 @@
         "h": 5,
         "w": 5,
         "x": 0,
-        "y": 6
+        "y": 8
       },
       "id": 69,
       "libraryPanel": {
@@ -602,7 +202,7 @@
         "h": 5,
         "w": 5,
         "x": 5,
-        "y": 6
+        "y": 8
       },
       "id": 70,
       "links": [],
@@ -685,7 +285,7 @@
         "h": 5,
         "w": 4,
         "x": 10,
-        "y": 6
+        "y": 8
       },
       "id": 66,
       "links": [],
@@ -768,7 +368,7 @@
         "h": 5,
         "w": 5,
         "x": 14,
-        "y": 6
+        "y": 8
       },
       "id": 40,
       "links": [],
@@ -851,7 +451,7 @@
         "h": 5,
         "w": 5,
         "x": 19,
-        "y": 6
+        "y": 8
       },
       "id": 71,
       "links": [],
@@ -934,7 +534,7 @@
         "h": 5,
         "w": 5,
         "x": 0,
-        "y": 11
+        "y": 13
       },
       "id": 73,
       "links": [],
@@ -1017,7 +617,7 @@
         "h": 5,
         "w": 5,
         "x": 5,
-        "y": 11
+        "y": 13
       },
       "id": 72,
       "links": [],
@@ -1100,7 +700,7 @@
         "h": 5,
         "w": 4,
         "x": 10,
-        "y": 11
+        "y": 13
       },
       "id": 41,
       "links": [],
@@ -1183,7 +783,7 @@
         "h": 5,
         "w": 5,
         "x": 14,
-        "y": 11
+        "y": 13
       },
       "id": 38,
       "links": [],
@@ -1266,7 +866,7 @@
         "h": 5,
         "w": 5,
         "x": 19,
-        "y": 11
+        "y": 13
       },
       "id": 37,
       "links": [],
@@ -1515,7 +1115,7 @@
         "h": 15,
         "w": 12,
         "x": 0,
-        "y": 16
+        "y": 18
       },
       "id": 86,
       "links": [],
@@ -1586,7 +1186,7 @@
         "h": 15,
         "w": 12,
         "x": 12,
-        "y": 16
+        "y": 18
       },
       "id": 62,
       "links": [],
@@ -1686,7 +1286,7 @@
         "h": 29,
         "w": 24,
         "x": 0,
-        "y": 31
+        "y": 33
       },
       "id": 88,
       "links": [],
@@ -1783,7 +1383,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 60
+        "y": 62
       },
       "id": 4,
       "panels": [],
@@ -1847,8 +1447,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "super-light-yellow",
@@ -2055,7 +1654,7 @@
         "h": 18,
         "w": 24,
         "x": 0,
-        "y": 61
+        "y": 63
       },
       "id": 7,
       "links": [],
@@ -2141,8 +1740,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "red",
-                "value": null
+                "color": "red"
               },
               {
                 "color": "orange",
@@ -2313,7 +1911,7 @@
         "h": 14,
         "w": 12,
         "x": 0,
-        "y": 79
+        "y": 81
       },
       "id": 75,
       "links": [],
@@ -2400,8 +1998,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "red",
-                "value": null
+                "color": "red"
               },
               {
                 "color": "orange",
@@ -2572,7 +2169,7 @@
         "h": 14,
         "w": 12,
         "x": 12,
-        "y": 79
+        "y": 81
       },
       "id": 8,
       "links": [],
@@ -2659,8 +2256,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "red",
-                "value": null
+                "color": "red"
               },
               {
                 "color": "orange",
@@ -2831,7 +2427,7 @@
         "h": 14,
         "w": 12,
         "x": 0,
-        "y": 93
+        "y": 95
       },
       "id": 77,
       "links": [],
@@ -2917,8 +2513,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "red",
-                "value": null
+                "color": "red"
               },
               {
                 "color": "orange",
@@ -3089,7 +2684,7 @@
         "h": 14,
         "w": 12,
         "x": 12,
-        "y": 93
+        "y": 95
       },
       "id": 76,
       "links": [],
@@ -3138,7 +2733,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 107
+        "y": 109
       },
       "id": 27,
       "panels": [],
@@ -3203,8 +2798,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3371,7 +2965,7 @@
         "h": 13,
         "w": 12,
         "x": 0,
-        "y": 108
+        "y": 110
       },
       "id": 9,
       "links": [],
@@ -3459,8 +3053,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3627,7 +3220,7 @@
         "h": 13,
         "w": 12,
         "x": 12,
-        "y": 108
+        "y": 110
       },
       "id": 87,
       "links": [],
@@ -3676,7 +3269,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 121
+        "y": 123
       },
       "id": 11,
       "panels": [],
@@ -3741,8 +3334,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3909,7 +3501,7 @@
         "h": 12,
         "w": 12,
         "x": 0,
-        "y": 122
+        "y": 124
       },
       "id": 13,
       "links": [],
@@ -3997,8 +3589,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4165,7 +3756,7 @@
         "h": 12,
         "w": 12,
         "x": 12,
-        "y": 122
+        "y": 124
       },
       "id": 18,
       "links": [],
@@ -4253,8 +3844,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4421,7 +4011,7 @@
         "h": 12,
         "w": 12,
         "x": 0,
-        "y": 134
+        "y": 136
       },
       "id": 79,
       "links": [],
@@ -4509,8 +4099,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4677,7 +4266,7 @@
         "h": 12,
         "w": 12,
         "x": 12,
-        "y": 134
+        "y": 136
       },
       "id": 12,
       "links": [],
@@ -4764,8 +4353,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent",
-                "value": null
+                "color": "transparent"
               }
             ]
           },
@@ -4793,7 +4381,7 @@
         "h": 12,
         "w": 12,
         "x": 0,
-        "y": 146
+        "y": 148
       },
       "id": 34,
       "links": [],
@@ -4880,8 +4468,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent",
-                "value": null
+                "color": "transparent"
               }
             ]
           },
@@ -4909,7 +4496,7 @@
         "h": 12,
         "w": 12,
         "x": 12,
-        "y": 146
+        "y": 148
       },
       "id": 16,
       "links": [],
@@ -4958,7 +4545,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 158
+        "y": 160
       },
       "id": 29,
       "panels": [],
@@ -5023,8 +4610,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -5191,7 +4777,7 @@
         "h": 13,
         "w": 12,
         "x": 0,
-        "y": 159
+        "y": 161
       },
       "id": 14,
       "links": [],
@@ -5286,8 +4872,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#C4162A",
-                "value": null
+                "color": "#C4162A"
               },
               {
                 "color": "#1F60C4",
@@ -5307,7 +4892,7 @@
         "h": 13,
         "w": 12,
         "x": 12,
-        "y": 159
+        "y": 161
       },
       "id": 63,
       "links": [],
@@ -5396,8 +4981,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -5564,7 +5148,7 @@
         "h": 14,
         "w": 12,
         "x": 0,
-        "y": 172
+        "y": 174
       },
       "id": 20,
       "links": [],
@@ -5651,8 +5235,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent",
-                "value": null
+                "color": "transparent"
               }
             ]
           },
@@ -5815,7 +5398,7 @@
         "h": 14,
         "w": 12,
         "x": 12,
-        "y": 172
+        "y": 174
       },
       "id": 15,
       "links": [],
@@ -6070,7 +5653,7 @@
         "h": 12,
         "w": 12,
         "x": 0,
-        "y": 186
+        "y": 188
       },
       "id": 22,
       "links": [],
@@ -6324,7 +5907,7 @@
         "h": 12,
         "w": 12,
         "x": 12,
-        "y": 186
+        "y": 188
       },
       "id": 21,
       "links": [],
@@ -6439,7 +6022,7 @@
         "h": 12,
         "w": 12,
         "x": 0,
-        "y": 198
+        "y": 200
       },
       "id": 65,
       "links": [],
@@ -6555,7 +6138,7 @@
         "h": 12,
         "w": 12,
         "x": 12,
-        "y": 198
+        "y": 200
       },
       "id": 80,
       "links": [],
@@ -6670,7 +6253,7 @@
         "h": 12,
         "w": 12,
         "x": 0,
-        "y": 210
+        "y": 212
       },
       "id": 81,
       "links": [],
@@ -6785,7 +6368,7 @@
         "h": 12,
         "w": 12,
         "x": 12,
-        "y": 210
+        "y": 212
       },
       "id": 82,
       "links": [],
@@ -6834,7 +6417,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 222
+        "y": 224
       },
       "id": 53,
       "panels": [],
@@ -7065,7 +6648,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 223
+        "y": 225
       },
       "id": 83,
       "links": [],
@@ -7315,7 +6898,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 235
+        "y": 237
       },
       "id": 60,
       "links": [],
@@ -7565,7 +7148,7 @@
         "h": 13,
         "w": 24,
         "x": 0,
-        "y": 247
+        "y": 249
       },
       "id": 58,
       "links": [],
@@ -7815,7 +7398,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 260
+        "y": 262
       },
       "id": 59,
       "links": [],
@@ -7864,7 +7447,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 272
+        "y": 274
       },
       "id": 51,
       "panels": [],
@@ -8095,7 +7678,7 @@
         "h": 13,
         "w": 12,
         "x": 0,
-        "y": 273
+        "y": 275
       },
       "id": 84,
       "links": [],
@@ -8352,7 +7935,7 @@
         "h": 13,
         "w": 6,
         "x": 12,
-        "y": 273
+        "y": 275
       },
       "id": 55,
       "links": [],
@@ -8610,7 +8193,7 @@
         "h": 13,
         "w": 6,
         "x": 18,
-        "y": 273
+        "y": 275
       },
       "id": 56,
       "links": [],
@@ -8659,7 +8242,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 286
+        "y": 288
       },
       "id": 46,
       "panels": [],
@@ -8890,7 +8473,7 @@
         "h": 12,
         "w": 12,
         "x": 0,
-        "y": 287
+        "y": 289
       },
       "id": 85,
       "links": [],
@@ -9148,7 +8731,7 @@
         "h": 12,
         "w": 6,
         "x": 12,
-        "y": 287
+        "y": 289
       },
       "id": 48,
       "links": [],
@@ -9406,7 +8989,7 @@
         "h": 12,
         "w": 6,
         "x": 18,
-        "y": 287
+        "y": 289
       },
       "id": 49,
       "links": [],
@@ -9563,7 +9146,7 @@
     ]
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
@@ -9596,6 +9179,6 @@
   "timezone": "",
   "title": "RabbitMQ / Global Overview",
   "uid": "b94481c7-8ee3-42c9-8653-65dab959965a",
-  "version": 99,
+  "version": 101,
   "weekStart": ""
 }
