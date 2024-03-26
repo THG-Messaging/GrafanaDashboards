@@ -26,7 +26,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 17308,
   "graphTooltip": 0,
-  "id": 97,
+  "id": 102,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -1266,8 +1266,114 @@
           "refId": "A"
         }
       ],
-      "title": "Messages in Queue",
+      "title": "Messages in Queues / by Virtual Host",
       "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Bytes",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 25,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 2,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
+      "id": 24,
+      "options": {
+        "legend": {
+          "calcs": [
+            "min",
+            "max",
+            "mean",
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "container_memory_usage_bytes{namespace=\"$namespace\", container=\"rabbitmq\"}",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{pod}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Memory Usage by pod",
+      "type": "timeseries"
     },
     {
       "datasource": {
@@ -1331,7 +1437,7 @@
         "h": 14,
         "w": 24,
         "x": 0,
-        "y": 22
+        "y": 36
       },
       "id": 23,
       "links": [],
@@ -1383,7 +1489,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 36
+        "y": 50
       },
       "id": 6,
       "panels": [],
@@ -1463,7 +1569,7 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 37
+        "y": 51
       },
       "id": 7,
       "links": [],
@@ -1523,7 +1629,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 47
+        "y": 61
       },
       "id": 8,
       "panels": [],
@@ -1707,7 +1813,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 48
+        "y": 62
       },
       "id": 9,
       "links": [],
@@ -1808,8 +1914,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1825,7 +1930,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 56
+        "y": 70
       },
       "id": 10,
       "links": [],
@@ -1875,7 +1980,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "5s",
+  "refresh": "1m",
   "schemaVersion": 38,
   "style": "dark",
   "tags": [
@@ -1971,8 +2076,8 @@
       {
         "current": {
           "selected": true,
-          "text": "/",
-          "value": "/"
+          "text": "/sales-team",
+          "value": "/sales-team"
         },
         "datasource": {
           "type": "prometheus",
@@ -2000,9 +2105,9 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "selected": true,
+          "text": "sales-queue",
+          "value": "sales-queue"
         },
         "datasource": {
           "type": "prometheus",
@@ -2031,7 +2136,7 @@
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {
@@ -2062,6 +2167,6 @@
   "timezone": "utc",
   "title": "RabbitMQ / Queue Overview",
   "uid": "rabbitmq-queue-12312",
-  "version": 41,
+  "version": 3,
   "weekStart": ""
 }
