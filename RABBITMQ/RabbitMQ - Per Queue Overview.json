@@ -345,13 +345,13 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(increase(rabbitmq_detailed_queue_messages{vhost=\"$vhost\", queue=\"$queue\"}[1m]))",
+          "expr": "sum(rate(rabbitmq_detailed_queue_messages{vhost=\"$vhost\", queue=\"$queue\"}[1m]))",
           "instant": false,
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Incoming messages / s",
+      "title": "Incoming messages / m",
       "type": "stat"
     },
     {
@@ -424,7 +424,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(rabbitmq_channel_messages_delivered_ack_total{vhost=\"$vhost\", queue=\"$queue\"}[1m]))",
+          "expr": "sum(rate(rabbitmq_channel_messages_delivered_ack_total{vhost=\"$vhost\", queue=\"$queue\"}[1m]))",
           "instant": false,
           "range": true,
           "refId": "A"
@@ -1337,7 +1337,7 @@
         "x": 0,
         "y": 22
       },
-      "id": 24,
+      "id": 25,
       "options": {
         "legend": {
           "calcs": [
@@ -1348,7 +1348,9 @@
           ],
           "displayMode": "table",
           "placement": "right",
-          "showLegend": true
+          "showLegend": true,
+          "sortBy": "Last",
+          "sortDesc": true
         },
         "tooltip": {
           "mode": "multi",
@@ -1364,7 +1366,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "container_memory_usage_bytes{namespace=\"$namespace\", container=\"rabbitmq\"}",
+          "expr": "sum by (pod) (container_memory_usage_bytes{namespace=\"$namespace\"})",
           "instant": false,
           "interval": "",
           "legendFormat": "{{pod}}",
@@ -1914,7 +1916,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1980,7 +1983,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "1m",
+  "refresh": "10s",
   "schemaVersion": 38,
   "style": "dark",
   "tags": [
@@ -2075,9 +2078,9 @@
       },
       {
         "current": {
-          "selected": true,
-          "text": "/sales-team",
-          "value": "/sales-team"
+          "selected": false,
+          "text": "/",
+          "value": "/"
         },
         "datasource": {
           "type": "prometheus",
@@ -2105,9 +2108,9 @@
       },
       {
         "current": {
-          "selected": true,
-          "text": "sales-queue",
-          "value": "sales-queue"
+          "selected": false,
+          "text": "Just-a-test",
+          "value": "Just-a-test"
         },
         "datasource": {
           "type": "prometheus",
@@ -2136,7 +2139,7 @@
     ]
   },
   "time": {
-    "from": "now-24h",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {
@@ -2167,6 +2170,6 @@
   "timezone": "utc",
   "title": "RabbitMQ / Queue Overview",
   "uid": "rabbitmq-queue-12312",
-  "version": 3,
+  "version": 4,
   "weekStart": ""
 }
