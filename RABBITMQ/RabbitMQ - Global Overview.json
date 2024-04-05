@@ -181,7 +181,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "super-light-green",
+                "color": "green",
                 "value": null
               },
               {
@@ -645,16 +645,36 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#C4162A",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "#1F60C4",
-                "value": -1
+                "color": "green",
+                "value": 10000
               },
               {
-                "color": "#37872D",
-                "value": 50
+                "color": "dark-green",
+                "value": 20010
+              },
+              {
+                "color": "yellow",
+                "value": 30020
+              },
+              {
+                "color": "orange",
+                "value": 35030
+              },
+              {
+                "color": "dark-orange",
+                "value": 40040
+              },
+              {
+                "color": "dark-orange",
+                "value": 45050
+              },
+              {
+                "color": "red",
+                "value": 50060
               }
             ]
           },
@@ -733,12 +753,8 @@
                 "value": null
               },
               {
-                "color": "#1F60C4",
-                "value": 0
-              },
-              {
                 "color": "#37872D",
-                "value": 10
+                "value": 100
               }
             ]
           },
@@ -990,7 +1006,7 @@
               "mode": "normal"
             },
             "thresholdsStyle": {
-              "mode": "off"
+              "mode": "area"
             }
           },
           "decimals": 0,
@@ -1003,6 +1019,46 @@
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "super-light-yellow",
+                "value": 300000
+              },
+              {
+                "color": "yellow",
+                "value": 500000
+              },
+              {
+                "color": "dark-yellow",
+                "value": 600010
+              },
+              {
+                "color": "orange",
+                "value": 800020
+              },
+              {
+                "color": "semi-dark-orange",
+                "value": 900030
+              },
+              {
+                "color": "dark-orange",
+                "value": 1000000
+              },
+              {
+                "color": "light-red",
+                "value": 1500010
+              },
+              {
+                "color": "red",
+                "value": 2000020
+              },
+              {
+                "color": "semi-dark-red",
+                "value": 2500030
+              },
+              {
+                "color": "dark-red",
+                "value": 3000040
               }
             ]
           },
@@ -1335,7 +1391,7 @@
               "mode": "none"
             },
             "thresholdsStyle": {
-              "mode": "off"
+              "mode": "area"
             }
           },
           "mappings": [],
@@ -1347,8 +1403,72 @@
                 "value": null
               },
               {
+                "color": "light-green",
+                "value": 50000
+              },
+              {
+                "color": "green",
+                "value": 100000
+              },
+              {
+                "color": "dark-green",
+                "value": 150000
+              },
+              {
+                "color": "super-light-yellow",
+                "value": 200000
+              },
+              {
+                "color": "yellow",
+                "value": 300000
+              },
+              {
+                "color": "dark-yellow",
+                "value": 400000
+              },
+              {
+                "color": "super-light-orange",
+                "value": 400010
+              },
+              {
+                "color": "orange",
+                "value": 500000
+              },
+              {
+                "color": "orange",
+                "value": 600010
+              },
+              {
+                "color": "dark-orange",
+                "value": 700020
+              },
+              {
+                "color": "semi-dark-orange",
+                "value": 1000030
+              },
+              {
+                "color": "dark-orange",
+                "value": 1500040
+              },
+              {
+                "color": "light-red",
+                "value": 2000000
+              },
+              {
                 "color": "red",
-                "value": 80
+                "value": 2300010
+              },
+              {
+                "color": "semi-dark-red",
+                "value": 2600020
+              },
+              {
+                "color": "semi-dark-red",
+                "value": 3000030
+              },
+              {
+                "color": "dark-red",
+                "value": 4500040
               }
             ]
           },
@@ -1512,7 +1632,7 @@
               "mode": "normal"
             },
             "thresholdsStyle": {
-              "mode": "off"
+              "mode": "line+area"
             }
           },
           "mappings": [],
@@ -1521,16 +1641,28 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "light-green",
                 "value": null
               },
               {
+                "color": "green",
+                "value": 20
+              },
+              {
+                "color": "#EAB839",
+                "value": 30
+              },
+              {
+                "color": "dark-orange",
+                "value": 40
+              },
+              {
                 "color": "red",
-                "value": 80
+                "value": 50
               }
             ]
           },
-          "unit": "short"
+          "unit": "percent"
         },
         "overrides": [
           {
@@ -1609,6 +1741,30 @@
                     10
                   ],
                   "fill": "dash"
+                }
+              }
+            ]
+          },
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "rabbitmq-server-0"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
                 }
               }
             ]
@@ -1702,7 +1858,7 @@
               "mode": "none"
             },
             "thresholdsStyle": {
-              "mode": "off"
+              "mode": "line+area"
             }
           },
           "decimals": 2,
@@ -1715,14 +1871,51 @@
                 "value": null
               },
               {
+                "color": "yellow",
+                "value": 5000000010
+              },
+              {
+                "color": "semi-dark-orange",
+                "value": 8000000020
+              },
+              {
                 "color": "red",
-                "value": 80
+                "value": 10000000030
+              },
+              {
+                "color": "dark-red",
+                "value": 11000000040
               }
             ]
           },
           "unit": "bytes"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "rabbitmq-server-0"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 14,
@@ -1740,7 +1933,7 @@
             "last"
           ],
           "displayMode": "table",
-          "placement": "right",
+          "placement": "bottom",
           "showLegend": true,
           "sortBy": "Last",
           "sortDesc": true
@@ -3130,7 +3323,7 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
-      "description": "Total number of ready messages ready to be delivered to consumers.\n\nAim to keep this value as low as possible. RabbitMQ behaves best when messages are flowing through it. It's OK for publishers to occasionally outpace consumers, but the expectation is that consumers will eventually process all ready messages.\n\nIf this metric keeps increasing, your system will eventually run out of memory and/or disk space. Consider using TTL or Queue Length Limit to prevent unbounded message growth.\n\n* [Queues](https://www.rabbitmq.com/queues.html)\n* [Consumers](https://www.rabbitmq.com/consumers.html)\n* [Queue Length Limit](https://www.rabbitmq.com/maxlength.html)\n* [Time-To-Live and Expiration](https://www.rabbitmq.com/ttl.html)",
+      "description": "Total number of ready messages ready to be delivered to consumers.\n\nAim to keep this value as low as possible. RabbitMQ behaves best when messages are flowing through it. It's OK for publishers to occasionally outpace consumers, but the expectation is that consumers will eventually process all ready messages.\n\nIf this metric keeps increasing, your system will eventually run out of memory and/or disk space. Consider using TTL or Queue Length Limit to prevent unbounded message growth.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3163,7 +3356,7 @@
               "mode": "normal"
             },
             "thresholdsStyle": {
-              "mode": "off"
+              "mode": "line+area"
             }
           },
           "decimals": 0,
@@ -3174,12 +3367,64 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "super-light-green",
                 "value": null
               },
               {
+                "color": "light-green",
+                "value": 50000
+              },
+              {
+                "color": "green",
+                "value": 100010
+              },
+              {
+                "color": "dark-green",
+                "value": 200020
+              },
+              {
+                "color": "super-light-yellow",
+                "value": 300030
+              },
+              {
+                "color": "light-yellow",
+                "value": 400040
+              },
+              {
+                "color": "semi-dark-yellow",
+                "value": 400050
+              },
+              {
+                "color": "orange",
+                "value": 500060
+              },
+              {
+                "color": "semi-dark-orange",
+                "value": 600070
+              },
+              {
+                "color": "dark-orange",
+                "value": 700080
+              },
+              {
+                "color": "super-light-red",
+                "value": 800090
+              },
+              {
+                "color": "light-red",
+                "value": 900100
+              },
+              {
                 "color": "red",
-                "value": 80
+                "value": 1000110
+              },
+              {
+                "color": "semi-dark-red",
+                "value": 1500120
+              },
+              {
+                "color": "dark-red",
+                "value": 2000130
               }
             ]
           },
@@ -3712,7 +3957,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3967,7 +4213,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4222,7 +4469,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4477,7 +4725,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4731,7 +4980,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent"
+                "color": "transparent",
+                "value": null
               }
             ]
           },
@@ -4846,7 +5096,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent"
+                "color": "transparent",
+                "value": null
               }
             ]
           },
@@ -4988,7 +5239,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5250,7 +5502,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#C4162A"
+                "color": "#C4162A",
+                "value": null
               },
               {
                 "color": "#1F60C4",
@@ -5359,7 +5612,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -5613,7 +5867,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent"
+                "color": "transparent",
+                "value": null
               }
             ]
           },
@@ -5864,7 +6119,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -6118,7 +6374,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -6380,7 +6637,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#37872D"
+                "color": "#37872D",
+                "value": null
               },
               {
                 "color": "#1F60C4",
@@ -6488,7 +6746,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent"
+                "color": "transparent",
+                "value": null
               }
             ]
           },
@@ -6603,7 +6862,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent"
+                "color": "transparent",
+                "value": null
               }
             ]
           },
@@ -6718,7 +6978,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent"
+                "color": "transparent",
+                "value": null
               }
             ]
           },
@@ -6859,7 +7120,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -7113,7 +7375,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent"
+                "color": "transparent",
+                "value": null
               }
             ]
           },
@@ -7363,7 +7626,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent"
+                "color": "transparent",
+                "value": null
               }
             ]
           },
@@ -7613,7 +7877,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent"
+                "color": "transparent",
+                "value": null
               }
             ]
           },
@@ -7889,7 +8154,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -8142,7 +8408,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent"
+                "color": "transparent",
+                "value": null
               },
               {
                 "color": "orange",
@@ -8400,7 +8667,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent"
+                "color": "transparent",
+                "value": null
               },
               {
                 "color": "orange",
@@ -8684,7 +8952,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -8938,7 +9207,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent"
+                "color": "transparent",
+                "value": null
               },
               {
                 "color": "orange",
@@ -9196,7 +9466,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent"
+                "color": "transparent",
+                "value": null
               },
               {
                 "color": "orange",
@@ -9407,7 +9678,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "schemaVersion": 38,
   "style": "dark",
   "tags": [
@@ -9496,7 +9767,7 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {
@@ -9529,6 +9800,6 @@
   "timezone": "",
   "title": "RabbitMQ / Global Overview",
   "uid": "b94481c7-8ee3-42c9-8653-65dab959965a",
-  "version": 115,
+  "version": 124,
   "weekStart": ""
 }
