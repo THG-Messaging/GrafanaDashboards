@@ -1,0 +1,32 @@
+kind: PrometheusRule
+apiVersion: monitoring.coreos.com/v1
+metadata:
+  name: kube-stateful-set-update-not-rolled-out
+  namespace: messaging
+spec:
+  groups:
+  - name: kube-node-alerts
+    rules:
+    - alert: KubeStatefulSetUpdateNotRolledOut
+      expr: |
+        (
+        max without (revision) (
+        kube_statefulset_status_current_revision{job="kube-state-metrics"}
+        unless
+        kube_statefulset_status_update_revision{job="kube-state-metrics"}
+        )
+        *
+        (
+        kube_statefulset_replicas{job="kube-state-metrics"}
+        !=
+        kube_statefulset_status_replicas_updated{job="kube-state-metrics"}
+        )
+        )  and (
+        changes(kube_statefulset_status_replicas_updated{job="kube-state-metrics"}[5m])
+        == 0 )
+      for: 15m
+      labels:
+        severity: warning
+      annotations:
+        description: StatefulSet {{ $labels.namespace }}/{{ $labels.statefulset }} update has not been rolled out.
+        summary: StatefulSet update has not been rolled out.

@@ -1,0 +1,21 @@
+kind: PrometheusRule
+apiVersion: monitoring.coreos.com/v1
+metadata:
+  name: cpu-throttling-high
+  namespace: messaging
+spec:
+  groups:
+  - name: kube-node-alerts
+    rules:
+    - alert: CPUThrottlingHigh
+      expr: |
+        sum(increase(container_cpu_cfs_throttled_periods_total{container!="", }[5m])) by (container, pod, namespace)
+        /
+        sum(increase(container_cpu_cfs_periods_total{}[5m])) by (container, pod, namespace)
+        > ( 30 / 100 )
+      for: 15m
+      labels:
+        severity: info
+      annotations:
+        description: '{{ $value | humanizePercentage }} throttling of CPU in namespace {{ $labels.namespace }} for container {{ $labels.container }} in pod {{ $labels.pod }}.'
+        summary: Processes experience elevated CPU throttling.

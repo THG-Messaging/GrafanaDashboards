@@ -1,0 +1,19 @@
+kind: PrometheusRule
+apiVersion: monitoring.coreos.com/v1
+metadata:
+  name: kube-job-not-completed
+  namespace: messaging
+spec:
+  groups:
+  - name: kube-node-alerts
+    rules:
+    - alert: KubeJobNotCompleted
+      expr: |
+        time() - max by(namespace, job_name, cluster) (kube_job_status_start_time{job="kube-state-metrics"}
+        and
+        kube_job_status_active{job="kube-state-metrics"} > 0) > 43200
+      labels:
+        severity: warning
+      annotations:
+        description: pod/{{ $labels.pod }} in namespace {{ $labels.namespace }} on container {{ $labels.container}} has been in waiting state for longer than 1 hour.
+        summary: Pod container waiting longer than 1 hour.

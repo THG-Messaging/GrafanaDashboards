@@ -1,0 +1,18 @@
+kind: PrometheusRule
+apiVersion: monitoring.coreos.com/v1
+metadata:
+  name: kube-network-traffic-spike-over-hour
+  namespace: messaging
+spec:
+  groups:
+  - name: kube-node-alerts
+    rules:
+    - alert: KubeNetworkTrafficSpikeOverHour
+      expr: |
+        (avg_over_time(node_network_receive_bytes_total[30m]) / avg_over_time(node_network_receive_bytes_total[60m] offset 30m)) > 1.5  # Threshold: 50% increase in traffic
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "Network traffic spike (hour view) on node {{ $labels.pod }}"
+        description: "Average network receive traffic in the last 30 minutes is significantly higher than the preceding 30 minutes (over a 60 minute window) on node {{ $labels.pod }}. Investigate for potential traffic bursts."

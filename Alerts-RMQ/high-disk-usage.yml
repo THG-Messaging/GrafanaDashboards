@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: rabbitmq-low-disk-alert
+  namespace: messaging
+  labels:
+    role: alert-rules
+spec:
+  groups:
+  - name: rabbitmq
+    rules:
+    - alert: RabbitMQLowDiskSpace
+      expr: rabbitmq_disk_space_available_bytes * 100 / rabbitmq_disk_space_available_limit_bytes < 30
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "RabbitMQ Disk Space Low (instance {{ $labels.instance }})"
+        description: "Disk space on RabbitMQ node {{ $labels.instance }}/{{ $labels.pod }} is running low."

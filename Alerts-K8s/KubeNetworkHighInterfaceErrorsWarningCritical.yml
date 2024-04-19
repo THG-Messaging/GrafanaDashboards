@@ -1,0 +1,18 @@
+kind: PrometheusRule
+apiVersion: monitoring.coreos.com/v1
+metadata:
+  name: kube-network-high-interface-errors
+  namespace: messaging
+spec:
+  groups:
+  - name: kube-node-alerts
+    rules:
+    - alert: KubeNetworkHighInterfaceErrors
+      expr: |
+        rate(node_network_receive_errs_total[2m]) + rate(node_network_transmit_errs_total[2m]) > 5
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "Critical network errors on node {{ $labels.pod }}"
+        description: "Network interface on {{ $labels.pod }} is experiencing alarming errors. Investigation required - near critical threshold."

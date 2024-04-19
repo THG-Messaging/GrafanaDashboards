@@ -1,0 +1,20 @@
+kind: PrometheusRule
+apiVersion: monitoring.coreos.com/v1
+metadata:
+  name: kube-stateful-set-generation-mismatch
+  namespace: messaging
+spec:
+  groups:
+  - name: kube-node-alerts
+    rules:
+    - alert: KubeStatefulSetGenerationMismatch
+      expr: |
+        kube_statefulset_status_observed_generation{job="kube-state-metrics"}
+        !=
+        kube_statefulset_metadata_generation{job="kube-state-metrics"}
+      for: 15m
+      labels:
+        severity: warning
+      annotations:
+        description: StatefulSet generation for {{ $labels.namespace }}/{{ $labels.statefulset }} does not match, this indicates that the StatefulSet has failed but has not been rolled back.
+        summary: StatefulSet generation mismatch due to possible roll-back.

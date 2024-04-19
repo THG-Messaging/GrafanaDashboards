@@ -1,0 +1,43 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: rabbitmq-high-cpu-usage-critical
+  namespace: messaging
+  labels:
+    role: alert-rules
+spec:
+  groups:
+  - name: rabbitmq
+    rules:
+    - alert: RabbitmqHighCpuUsageCritical
+      expr: |
+        100 - (avg by (instance, pod) (irate(process_cpu_seconds_total{job="rabbitmq"}[5m])) * 100) > 90
+      for: 2m
+      annotations:
+        description: "Critical CPU usage on RabbitMQ node ( > 90% ) \n VALUE = {{ $value }} \n LABELS = {{ $labels }}"
+        summary: RabbitMQ critical CPU usage (instance {{ $labels.instance }})
+      labels:
+        rulesgroup: rabbitmq
+        severity: critical
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: rabbitmq-high-cpu-usage
+  namespace: messaging
+  labels:
+    role: alert-rules
+spec:
+  groups:
+  - name: rabbitmq
+    rules:
+    - alert: RabbitmqHighCpuUsage
+      expr: |
+        100 - (avg by (instance, pod) (irate(process_cpu_seconds_total{job="rabbitmq"}[5m])) * 100) > 80
+      for: 5m
+      annotations:
+        description: "High CPU usage on RabbitMQ node ( > 80% ) \n VALUE = {{ $value }} \n LABELS = {{ $labels }}"
+        summary: RabbitMQ high CPU usage (instance {{ $labels.instance }})
+      labels:
+        rulesgroup: rabbitmq
+        severity: warning

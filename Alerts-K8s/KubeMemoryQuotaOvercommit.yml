@@ -1,0 +1,21 @@
+kind: PrometheusRule
+apiVersion: monitoring.coreos.com/v1
+metadata:
+  name: kube-memory-quota-overcommit
+  namespace: messaging
+spec:
+  groups:
+  - name: kube-node-alerts
+    rules:
+    - alert: KubeCPUQuotaOvercommit
+      expr: |
+        sum(min without(resource) (kube_resourcequota{job="kube-state-metrics", type="hard", resource=~"(memory|requests.memory)"}))
+        /
+        sum(kube_node_status_allocatable{resource="memory", job="kube-state-metrics"})
+        > 1.5
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        description: Cluster has overcommitted memory resource requests for Namespaces.
+        summary: Cluster has overcommitted memory resource requests.

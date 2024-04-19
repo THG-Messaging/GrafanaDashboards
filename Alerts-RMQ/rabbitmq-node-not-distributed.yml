@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: rrabbitmq-node-not-distributed
+  namespace: messaging
+  # If labels are defined in spec.ruleSelector.matchLabels of your deployed Prometheus object, make sure to include them here.
+  labels:
+    role: alert-rules
+spec:
+  groups:
+  - name: rabbitmq
+    rules:
+    - alert: RabbitmqNodeNotDistributed
+      expr: d_dist_node_state < 5
+      for: 0m
+      annotations:
+        summary: RabbitMQ node not distributed (instance {{ $labels.instance }})
+        description: "Distribution link state is not 'up'\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+      labels:
+        rulesgroup: rabbitmq
+        severity: critical

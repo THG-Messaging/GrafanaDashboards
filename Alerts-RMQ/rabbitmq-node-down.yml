@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: rabbitmq-node-down
+  namespace: messaging
+  # If labels are defined in spec.ruleSelector.matchLabels of your deployed Prometheus object, make sure to include them here.
+  labels:
+    role: alert-rules
+spec:
+  groups:
+  - name: rabbitmq
+    rules:
+    - alert: RabbitMQNodeDown
+      expr: sum(rabbitmq_build_info) < 5
+      for: 0m
+      annotations:
+        description: "Less than 5 nodes running in RabbitMQ cluster (5 Rabbitmq Nodes and 2 Rabbitmq operator nodes) \n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+        summary: RabbitMQ node down (instance {{ $labels.instance }})
+      labels:
+        rulesgroup: rabbitmq
+        severity: critical

@@ -1,0 +1,18 @@
+kind: PrometheusRule
+apiVersion: monitoring.coreos.com/v1
+metadata:
+  name: kube-persistent-volume-errors-critical
+  namespace: messaging
+spec:
+  groups:
+  - name: kube-node-alerts
+    rules:
+    - alert: KubePersistentVolumeErrors
+      expr: |
+        kube_persistentvolume_status_phase{phase=~"Failed|Pending",job="kube-state-metrics"} > 0
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        description: The persistent volume {{ $labels.persistentvolume }} has status {{ $labels.phase }}.
+        summary: PersistentVolume is having issues with provisioning.

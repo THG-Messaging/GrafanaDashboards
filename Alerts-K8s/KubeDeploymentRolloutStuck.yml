@@ -1,0 +1,20 @@
+kind: PrometheusRule
+apiVersion: monitoring.coreos.com/v1
+metadata:
+  name: kube-deployment-rollout-stuck
+  namespace: messaging
+spec:
+  groups:
+  - name: kube-node-alerts
+    rules:
+    - alert: KubeDeploymentRolloutStuck
+      expr: |
+        kube_deployment_status_condition{condition="Progressing", status="false",job="kube-state-metrics"}
+        != 0
+      for: 15m
+      labels:
+        severity: warning
+      annotations:
+        summary: Deployment has not matched the expected number of replicas.
+        description: Deployment {{ $labels.namespace }}/{{ $labels.deployment }} has not matched the expected number of replicas for longer than 15 minutes.
+

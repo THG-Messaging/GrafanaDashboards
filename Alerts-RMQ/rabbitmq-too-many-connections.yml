@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: rabbitmq-too-many-connections
+  namespace: messaging
+  # If labels are defined in spec.ruleSelector.matchLabels of your deployed Prometheus object, make sure to include them here.
+  labels:
+    role: alert-rules
+spec:
+  groups:
+  - name: rabbitmq
+    rules:
+    - alert: RabbitmqTooManyConnections
+      expr: rabbitmq_connections > 1000
+      for: 1m
+      annotations:
+        description: "The total connections of a node is too high\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+        summary: RabbitMQ too many connections (instance {{ $labels.instance }})
+      labels:
+        rulesgroup: rabbitmq
+        severity: warning
