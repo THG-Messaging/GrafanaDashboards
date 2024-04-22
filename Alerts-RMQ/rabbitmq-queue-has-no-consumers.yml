@@ -11,10 +11,7 @@ spec:
   - name: rabbitmq
     rules:
     - alert: QueueHasNoConsumers
-      expr: |
-        (
-          ((rabbitmq_detailed_queue_consumers{vhost="/", queue=~".*"} == 0) + rabbitmq_detailed_queue_messages) > 0
-        ) * on (instance, job) group_left(rabbitmq_cluster) rabbitmq_identity_info
+      expr: (rabbitmq_detailed_queue_consumers{vhost="/", queue=~".*"} == 0 and rabbitmq_detailed_queue_messages > 10000 ) * on (instance, job) group_left(rabbitmq_cluster) rabbitmq_identity_info
       for: 10m
       annotations:
         description: |
@@ -22,7 +19,7 @@ spec:
           in virtual host `{{ $labels.vhost }}` didn't have any consumers in
           RabbitMQ cluster `{{ $labels.rabbitmq_cluster }}` in namespace `{{ $labels.namespace }}`.
         summary: |
-          Messages are sitting idle in the queue, without any processing.
+          Messages are sitting idle in the queue, with 10000+ messages for 10 minutes.
           This alert is highly application specific (and e.g. doesn't make sense for stream queues).
       labels:
         rulesgroup: rabbitmq
